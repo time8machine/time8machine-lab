@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>time8machine | Open-Source Cognitive Physics Lab</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --accent: #ff4500; /* Thermodynamic orange/red */
+            --grid-line: rgba(255, 255, 255, 0.1);
+            --code-bg: rgba(255, 255, 255, 0.03);
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-left: 1px solid var(--grid-line);
+            border-right: 1px solid var(--grid-line);
+        }
+
+        header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .lab-title {
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-top: 10px;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--grid-line);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .abstract-box {
+            background: var(--code-bg);
+            border: 1px solid var(--grid-line);
+            padding: 30px;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--text-primary);
+        }
+
+        .research-question-box {
+            border: 1px solid var(--grid-line);
+            padding: 20px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .rq-title {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .equation-display {
+            font-size: 1.4rem;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed var(--text-secondary);
+        }
+
+        .ledger-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid var(--grid-line);
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--accent);
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .tag-audio { color: #00ffcc; font-weight: bold; }
+        .tag-digital { color: #ffaa00; font-weight: bold; }
+
+        audio {
+            filter: invert(100%);
+            height: 30px;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--grid-line);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <div class="lab-title">time8machine | Open-Source Research</div>
+            <h1>Cognitive Thermodynamics Lab</h1>
+        </div>
+        <div class="live-indicator">
+            <div class="pulse"></div>
+            DeSci Public Ledger: ACTIVE
+        </div>
+    </header>
+
+    <section id="abstract">
+        <h2>01. The Core Thesis</h2>
+        <div class="abstract-box">
+            <p>The deep learning revolution has confronted a fundamental thermodynamic hurdle: context-window degradation and the loss of long-horizon coherence in foundation models. This lab treats continuous cognitive coherence not as a strictly computational problem, but as an active, constraint-imposed entropy reduction process.</p>
+            
+            <div class="equation-display">
+                $$ X \propto Y^\alpha $$
+            </div>
+            
+            <p><strong>X</strong> = Coherence of thinking across time.<br>
+            <strong>Y</strong> = Constraint-Imposed Entropy Reduction.<br>
+            <strong>&alpha;</strong> = The mathematical scaling exponent (Efficiency).</p>
+        </div>
+    </section>
+
+    <section id="research-framework">
+        <h2>02. Formal Research Framework</h2>
+        
+        <h3>The Clock Hypothesis</h3>
+        <p>Current paradigms in Artificial Intelligence model consciousness as a "Cloud"—a continuous, probabilistic stream of token generation. This research challenges that paradigm, positing that human consciousness functions fundamentally as a "Clock"—a discrete, temporally bound operating system.</p>
+        
+        <p>We propose that AGI cannot achieve sustained, long-horizon reasoning without integrating a fundamental, oscillating temporal architecture (a 'heartbeat') to periodically reset system entropy.</p>
+
+        <div class="equation-display">
+            $$ \lim_{t \to \infty} X(t) \propto Y^\alpha $$
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+            Where X(t) is the retention of semantic coherence over infinite duration.
+        </p>
+
+        <br>
+
+        <h3>Primary Research Questions</h3>
+        
+        <div class="research-question-box">
+            <span class="rq-title">RQ1: The Thermodynamic Question (Entropy)</span>
+            <p>Does the imposition of strict temporal constraints (e.g., a 93 BPM rhythmic grid) measurably reduce "semantic drift" in complex information transmission? Unconstrained data streams accumulate entropy; constrained streams force error-correction at every beat.</p>
+        </div>
+
+        <div class="research-question-box">
+            <span class="rq-title">RQ2: The Architectural Question (Mechanism)</span>
+            <p>Can the "Context Window" of an AGI be stabilized by replacing continuous token streams with "Quantized Narrative Blocks" (16-bar cycles)? This tests if rhythmic loops can create an infinite context window through periodic compression.</p>
+        </div>
+
+        <div class="research-question-box">
+            <span class="rq-title">RQ3: The Efficiency Question (Scaling Laws)</span>
+            <p>Is there a universal "Golden Ratio" of temporal constraint (&alpha;) that maximizes cognitive throughput? We aim to isolate the specific temporal frequency (e.g., the 93 BPM pocket) where physics encoding is maximized.</p>
+        </div>
+    </section>
+
+    <section id="methodology">
+        <h2>03. Empirical Methodology</h2>
+        <p>This research shifts the experimental site from traditional laboratory settings to active, high-noise digital ecosystems. Data is generated through two primary thermodynamic bottlenecks:</p>
+        <br>
+        <ul style="list-style-type: none; padding-left: 20px; border-left: 1px solid var(--grid-line);">
+            <li style="margin-bottom: 15px;"><strong>[Digital Phenotyping]</strong> Micro-blogging architectures force high-entropy theoretical physics through strict character limits, quantifying the entropy reduction (Y) required to maintain theoretical coherence (X).</li>
+            <li><strong>[Algorithmic Audio]</strong> Rhythmic composition acts as a temporal compression algorithm. Locking chaotic, abstract thoughts to a strict rhythmic grid (e.g., hip-hop production) forcefully reduces cognitive noise into a highly transmissible signal.</li>
+        </ul>
+    </section>
+
+    <section id="ledger">
+        <h2>04. Public Data Matrix [Live]</h2>
+        <div class="ledger-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Log_ID</th>
+                        <th>Timestamp</th>
+                        <th>Medium</th>
+                        <th>Constraint (Y)</th>
+                        <th>Coherence Output (X)</th>
+                        <th>Efficiency (&alpha;)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>000</td>
+                        <td>2026-02-27</td>
+                        <td><span class="tag-digital">Digital</span></td>
+                        <td>Abstract format + Platform char limit</td>
+                        <td>Established X &propto; Y&alpha; baseline.</td>
+                        <td>Initialization.</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>2026-03-02</td>
+                        <td>
+                            <span class="tag-audio">Audio</span><br>
+                            <audio controls style="width: 200px;">
+                                <source src="log001.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            </td>
+                        <td>93 BPM (Wassup Maine). Full 1:25 Duration / 16-Bar Narrative Arc.</td>
+                        <td>Sustained Longitudinal Coherence. Merged four distinct physical axioms into a unified theory without semantic drift.</td>
+                        <td>&alpha; > 1. The 93 BPM constraint allowed for modular logic stacking. Proved that strict rhythmic boundaries prevent the "dissolution of thought" over time.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>time8machine | Prior Art Established 2026 | Arizona State University</p>
+        <p>All data points are timestamped on-chain or via public digital footprint.</p>
+    </footer>
+
+</body>
+</html>
