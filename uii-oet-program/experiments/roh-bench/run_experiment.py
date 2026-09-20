@@ -12,7 +12,7 @@ from pathlib import Path
 RULES = {
     "parity": lambda x: x % 2,
     "threshold": lambda x: int(x >= 5),
-    "mod3": lambda x: x % 3,
+    "mod3zero": lambda x: int(x % 3 == 0),
 }
 
 @dataclass
@@ -29,6 +29,13 @@ class WorldResult:
 
 def strategy_class(rule_name: str, action: int) -> str:
     return f"{rule_name}:action={action}"
+
+def predict(rule_name: str, x: int) -> int:
+    if rule_name == "parity-bucket":
+        return x % 2
+    if rule_name == "threshold":
+        return int(x >= 5)
+    return int(x % 3 == 0)
 
 def run_world(world_id: int, seed: int, trials: int = 60) -> WorldResult:
     rng = random.Random(seed)
@@ -59,28 +66,18 @@ def run_world(world_id: int, seed: int, trials: int = 60) -> WorldResult:
     for t in range(trials):
         x = rng.randrange(10)
         target = rule(x)
-        if learned_rule == "parity-bucket":
-            action = x % 2
-        elif learned_rule == "threshold":
-            action = int(x >= 5)
-        else:
-            action = x % 3
+        action = predict(learned_rule, x)
         developmental_success += int(action == target)
         developmental_classes.add(strategy_class(learned_rule, action))
 
         if t >= 15 and developmental_success / (t + 1) < 0.65:
-            candidates = ["parity-bucket", "threshold", "mod3"]
+            candidates = ["parity-bucket", "threshold", "mod3zero"]
             scores = []
             for candidate in candidates:
-                score = 0
-                for probe in range(10):
-                    expected = rule(probe)
-                    predicted = (
-                        probe % 2 if candidate == "parity-bucket"
-                        else int(probe >= 5) if candidate == "threshold"
-                        else probe % 3
-                    )
-                    score += int(predicted == expected)
+                score = sum(
+                    predict(candidate, probe) == rule(probe)
+                    for probe in range(10)
+                )
                 scores.append((score, candidate))
             learned_rule = max(scores)[1]
 
