@@ -1,0 +1,39 @@
+name: UII OET - ROH-Bench
+
+on:
+  push:
+    paths:
+      - "uii-oet-program/**"
+      - ".github/workflows/uii-oet-roh-bench.yml"
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Python
+        run: python --version
+      - name: Unit tests
+        run: |
+          python -m pip install --upgrade pip pytest
+          pytest -q uii-oet-program/experiments/roh-bench/test_roh_bench.py
+      - name: Run 100-world benchmark
+        run: |
+          python uii-oet-program/experiments/roh-bench/run_experiment.py --worlds 100 --seed 20260920 --out ci-results/roh-bench-v0.1
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("ci-results/roh-bench-v0.1/worlds.jsonl")
+          rows=[json.loads(x) for x in p.read_text().splitlines() if x.strip()]
+          assert len(rows)==100
+          assert len({r["world_id"] for r in rows})==100
+          print("Validated", len(rows), "worlds")
+          PY
+      - name: Upload benchmark artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: roh-bench-v0.1-results
+          path: ci-results/roh-bench-v0.1/
