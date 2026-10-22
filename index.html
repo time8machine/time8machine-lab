@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>time8machine | Open-Source Cognitive Physics Lab</title>
+    <meta name="description" content="time8machine is an open-source cognitive physics lab testing X ∝ Y^α — whether constraint-imposed entropy reduction sustains coherence over time. Home of the Clock Hypothesis, the 93 BPM drift experiments, and Same Facts, Different Links.">
+    <meta name="author" content="Patrick Drake — time8machine">
+    <link rel="canonical" href="https://time8machine.github.io/time8machine-lab/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="time8machine">
+    <meta property="og:title" content="time8machine | Open-Source Cognitive Physics Lab">
+    <meta property="og:description" content="X ∝ Y^α — cognitive coherence over time from constraint-imposed entropy reduction. The Clock Hypothesis, RQ1–RQ3, and a public data matrix.">
+    <meta property="og:url" content="https://time8machine.github.io/time8machine-lab/">
+    <meta property="og:image" content="https://time8machine.github.io/time8machine-lab/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@time8machine">
+    <meta name="twitter:title" content="time8machine | Open-Source Cognitive Physics Lab">
+    <meta name="twitter:description" content="X ∝ Y^α — coherence over time from constraint-imposed entropy reduction. Clock Hypothesis, 93 BPM experiments, Same Facts, Different Links.">
+    <meta name="twitter:image" content="https://time8machine.github.io/time8machine-lab/og-image.png">
     
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
@@ -185,6 +199,25 @@
             border-top: 1px solid var(--grid-line);
             padding-top: 20px;
         }
+
+        a { color: #ff7a4d; text-decoration: underline; text-underline-offset: 3px; }
+        a:hover { color: #ffa07a; }
+        .site-nav { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 50px; border-bottom: 1px solid var(--grid-line); padding-bottom: 18px; }
+        .site-nav a { text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .log-entry { border: 1px solid var(--grid-line); background: rgba(0,0,0,0.3); padding: 20px; margin-bottom: 20px; }
+        .log-date { color: var(--accent); font-family: var(--font-mono); font-weight: bold; display: block; margin-bottom: 8px; }
+        .status { font-family: var(--font-mono); font-size: 0.8rem; border: 1px solid var(--grid-line); padding: 2px 8px; margin-left: 8px; color: var(--text-primary); white-space: nowrap; }
+        footer nav { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px; font-size: 0.85rem; }
+        @media (max-width: 700px) {
+            body { padding: 24px 14px; }
+            h1 { font-size: 2rem; }
+            header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            section { margin-bottom: 50px; }
+            .abstract-box { padding: 20px; }
+            audio { width: 100% !important; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 10px 8px; }
+        }
     </style>
 </head>
 <body>
@@ -200,12 +233,23 @@
         </div>
     </header>
 
+    <nav class="site-nav" aria-label="Site">
+        <a href="https://time8machine.com/">Main Site</a>
+        <a href="#abstract">Core Thesis</a>
+        <a href="#research-framework">Framework</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#ledger">Data Matrix</a>
+        <a href="#research-log">Research Log</a>
+        <a href="https://github.com/time8machine/time8machine-lab">GitHub</a>
+        <a href="https://x.com/time8machine">X</a>
+    </nav>
+
     <section id="abstract">
         <h2>01. The Core Thesis</h2>
         <div class="abstract-box">
             <p>The deep learning revolution has confronted a fundamental thermodynamic hurdle: context-window degradation and the loss of long-horizon coherence in foundation models. This lab treats continuous cognitive coherence not as a strictly computational problem, but as an active, constraint-imposed entropy reduction process.</p>
             
-            <div class="equation-display">
+            <div class="equation-display" role="img" aria-label="X is proportional to Y to the power alpha">
                 $$ X \propto Y^\alpha $$
             </div>
             
@@ -223,7 +267,7 @@
         
         <p>We propose that AGI cannot achieve sustained, long-horizon reasoning without integrating a fundamental, oscillating temporal architecture (a 'heartbeat') to periodically reset system entropy.</p>
 
-        <div class="equation-display">
+        <div class="equation-display" role="img" aria-label="As t approaches infinity, X of t is proportional to Y to the power alpha">
             $$ \lim_{t \to \infty} X(t) \propto Y^\alpha $$
         </div>
 
@@ -289,7 +333,7 @@
                         <td>2026-03-02</td>
                         <td>
                             <span class="tag-audio">Audio</span><br>
-                            <audio controls style="width: 200px;">
+                            <audio controls preload="metadata" aria-label="Log 001 audio: 93 BPM, Wassup Maine" style="width: 200px;">
                                 <source src="log001.mp3" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>
@@ -303,9 +347,40 @@
         </div>
     </section>
 
+    <section id="research-log">
+        <h2>05. Research Log — October 2026</h2>
+
+        <div class="log-entry">
+            <span class="log-date">2026-10-18 → running <span class="status">PILOT v1 · DAY 4 OF 14 (2026-10-22)</span></span>
+            <p><strong>Same Facts, Different Links.</strong> A daily experiment on the network question: the same 40 facts, linked four ways (A flat / B random links / C themed + typed relations / D C + hierarchy), 3 runs per condition, blind-scored on discovery, hypothesis quality, accuracy, and error correction. Rolling 4-day means put C first on discovery, hypotheses, and accuracy — with a ceiling effect on day 4 (all conditions 120/120) and n = 4 days, so <em>no winner is declared</em>. Connectivity is structural; performance is empirical. Measure, don't assume.</p>
+        </div>
+
+        <div class="log-entry">
+            <span class="log-date">2026-10-19 <span class="status">RQ1 · NO-GO FOR FULL BATCH AS DESIGNED</span></span>
+            <p><strong>93 BPM drift experiment — pilot, re-pilot, and adversarial calibration.</strong> Pilot: 375 answers, 99.2% correct, no condition differences (ceiling effect). Re-pilot with harder variants: 98.7%, still no differences. A v3 adversarial rebuild calibrated 99.8% → 95.7% across three rounds and never reached the 70–85% target band, so the re-pilot was correctly not run. Finding: the deterministic scheduling task type sits within this model class's reliable capability — the task type, not the numbers, has to change.</p>
+        </div>
+
+        <div class="log-entry">
+            <span class="log-date">2026-10-21 <span class="status">PROPOSITION · FORMAL v2.0</span></span>
+            <p><strong>The network-transformation proposition.</strong> "The next evolution of the network is not simply connecting more things. It is transforming what connections make possible." Formal version defines a link as an operation — it produces a hypothesis, reveals a pattern, or re-represents a problem — with feedback as the measure of progress, tested under exact-constant content and held-out-only scoring, with a random-reorganization control (proposed Condition E). Prepared for posting; the pilot above is its first test bed.</p>
+        </div>
+
+        <div class="log-entry">
+            <span class="log-date">2026-10-17 <span class="status">RQ1 SWEEP · CITATION-READY</span></span>
+            <p><strong>RQ1 literature sweep.</strong> Conservation-of-energy video filed as Anchor 001; sourced leads in three clusters (drift is measurable / temporal constraint improves coherence / imposed constraints reduce generation error), primaries pulled and verified; one unverifiable lead retracted and replaced. An information-theory backbone (Shannon, Hamming, Landauer, information bottleneck) is drafted as a separate addendum.</p>
+        </div>
+    </section>
+
     <footer>
-        <p>time8machine | Prior Art Established 2026 | Arizona State University</p>
+        <nav aria-label="Footer">
+            <a href="https://time8machine.com/">time8machine.com</a>
+            <a href="https://github.com/time8machine/time8machine-lab">GitHub — this lab</a>
+            <a href="https://x.com/time8machine">X — @time8machine</a>
+            <a href="https://time8machine.com/cognitive-thermodynamics">Cognitive Thermodynamics</a>
+        </nav>
+        <p>time8machine | Prior Art Established 2026 | Patrick Drake, Physics undergraduate, Kennesaw State University</p>
         <p>All data points are timestamped on-chain or via public digital footprint.</p>
+        <p>Last updated 2026-10-22.</p>
     </footer>
 
 </body>
